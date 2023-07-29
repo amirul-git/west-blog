@@ -10,9 +10,20 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $sortBy = $request->query('sort') ? $request->query('sort') : 'desc';
+        $category = $request->query('category') ? $request->query('category') : '1';
+        $timeTravelPost = Post::where('category_id', 4)->whereYear('created_at', 2023)->limit(1)->first();
+
+        $posts = Post::where('category_id', $category)->orderBy('created_at', $sortBy)->get();
+
+        $states = [
+            'sort' => $sortBy,
+            'category' => $category
+        ];
+
+        return view('post.index', compact('posts', 'states', 'timeTravelPost'));
     }
 
     /**
