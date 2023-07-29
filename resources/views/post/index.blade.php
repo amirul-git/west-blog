@@ -44,7 +44,7 @@
             <a href="{{ route('posts.show', ['post' => $post]) }}">
                 <div class="p-4 bg-[#171717] rounded-md text-center">
                     <h2 class="text-2xl">🗓️ {{ $post->created_at }} | {{ $post->title }}</h2>
-                    <p class="mt-4">{{ $post->text }}</p>
+                    <p class="mt-4">{{ substr($post->text, 0, 164) }}...</p>
                 </div>
             </a>
         @endforeach
