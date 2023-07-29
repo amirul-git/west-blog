@@ -24,7 +24,7 @@
 
 <body class="antialiased bg-[#212529] text-white p-6">
     <nav>
-        <a href="/" class="text-[18px]">Home</a>
+        <a href="/posts" class="text-[18px]">Home</a>
     </nav>
 
     @yield('main')

@@ -14,27 +14,26 @@
                 {{ $timeTravelPost->text }}
             </p>
         </div>
-        <div class="text-sm text-center mt-4">
-            <a href="#" class="px-2 py-1 bg-blue-600 rounded-md">github</a>
-            <a href="#" class="px-2 py-1 bg-blue-600 rounded-md">linkedin</a>
+        <div class="mt-8 text-center">
+            @include('partials.social')
         </div>
     </section>
     <section class="mt-16">
         <nav class="text-xl gap-6 flex justify-center">
-            <a href="{{ route('posts.index', ['category' => '1'], false) }}" class="text-center"><span
+            <a href="{{ route('posts.index', ['category' => '1']) }}" class="text-center"><span
                     class="@if ($states['category'] === '1') underline text-blue-300 @endif">Daily Update</span> ✨</a>
-            <a href="{{ route('posts.index', ['category' => '2'], false) }}" class="text-center"><span
+            <a href="{{ route('posts.index', ['category' => '2']) }}" class="text-center"><span
                     class="@if ($states['category'] === '2') underline text-blue-300 @endif">Long
                     Essays</span> 🌟</a>
-            <a href="{{ route('posts.index', ['category' => '3'], false) }}" class="text-center"><span
+            <a href="{{ route('posts.index', ['category' => '3']) }}" class="text-center"><span
                     class="@if ($states['category'] === '3') underline text-blue-300 @endif">Apps</span>
                 🚀</a>
         </nav>
         <div class="mt-8 flex gap-2 flex-wrap justify-center">
-            <a href="{{ route('posts.index', ['sort' => 'desc'], false) }}"
+            <a href="{{ route('posts.index', ['sort' => 'desc']) }}"
                 class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm @if ($states['sort'] !== 'desc') opacity-50 @endif">Newest
                 To Oldest</a>
-            <a href="{{ route('posts.index', ['sort' => 'asc'], false) }}"
+            <a href="{{ route('posts.index', ['sort' => 'asc']) }}"
                 class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm @if ($states['sort'] !== 'asc') opacity-50 @endif">Oldest
                 To
                 Newest</a>
