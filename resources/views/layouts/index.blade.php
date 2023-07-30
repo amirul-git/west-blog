@@ -23,11 +23,13 @@
 </head>
 
 <body class="antialiased bg-[#212529] text-white p-6">
-    <main>
-        <nav>
-            <a href="/posts" class="text-[18px]">Home</a>
-        </nav>
-        @yield('main')
+    <nav>
+        <a href="/posts" class="text-[18px]">Home</a>
+    </nav>
+    <main class="flex flex-col items-center">
+        <section class="max-w-3xl">
+            @yield('main')
+        </section>
     </main>
 </body>
 
