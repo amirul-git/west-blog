@@ -4,8 +4,10 @@
     <main class="px-16">
         <div class="flex mt-16 gap-3">
             <h1 class="text-3xl capitalize">{{ $post->created_at }} | {{ $post->title }}</h1>
-            <a href="{{ route('posts.edit', ['post' => $post]) }}"
-                class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm flex items-center justify-center">Edit</a>
+            @auth
+                <a href="{{ route('posts.edit', ['post' => $post]) }}"
+                    class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm flex items-center justify-center">Edit</a>
+            @endauth
         </div>
 
         {{-- solution to split end of line https://stackoverflow.com/a/3997367/15254140 --}}

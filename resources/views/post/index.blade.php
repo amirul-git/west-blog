@@ -6,10 +6,12 @@
         <div class="mt-8 text-center">
             <h2>Time travel:</h2>
             @if ($timeTravelPosts->isEmpty())
-                <div class="mt-2">
-                    <a href="{{ route('posts.create') }}"
-                        class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm">Create milestone</a>
-                </div>
+                @auth
+                    <div class="mt-2">
+                        <a href="{{ route('posts.create') }}"
+                            class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm">Create milestone</a>
+                    </div>
+                @endauth
             @else
                 <div class="mt-2 flex gap-2 flex-wrap justify-center">
                     @foreach ($timeTravelPosts as $timeTravelPost)
@@ -44,9 +46,11 @@
             <a href="{{ route('posts.index', ['category' => '3']) }}" class="text-center"><span
                     class="@if ($states['category'] === '3') underline text-blue-300 @endif">Apps</span>
                 🚀</a>
-            <a href="{{ route('posts.create') }}"
-                class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm flex items-center justify-center">New
-                Post</a>
+            @auth
+                <a href="{{ route('posts.create') }}"
+                    class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm flex items-center justify-center">New
+                    Post</a>
+            @endauth
         </nav>
         <div class="mt-8 flex gap-2 flex-wrap justify-center">
             <a href="{{ route('posts.index', ['sort' => 'desc']) }}"
