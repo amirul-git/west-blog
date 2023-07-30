@@ -22,8 +22,8 @@
     </style>
 </head>
 
-<body class="antialiased bg-[#212529] text-white p-6 flex flex-col items-center">
-    <main class="md:max-w-3xl">
+<body class="antialiased bg-[#212529] text-white p-6">
+    <main>
         <nav>
             <a href="/posts" class="text-[18px]">Home</a>
         </nav>
