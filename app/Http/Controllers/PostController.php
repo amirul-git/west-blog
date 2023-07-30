@@ -41,6 +41,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        if (!auth()->user()) {
+            abort(403);
+        }
         $categories = Category::all();
         return view('post.create', compact('categories'));
     }
@@ -50,6 +53,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        if (!auth()->user()) {
+            abort(403);
+        }
+
         $attr = $request->only(['title', 'text']);
         $post = new Post();
         $post->fill($attr);
@@ -73,6 +80,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (!auth()->user()) {
+            abort(403);
+        }
+
         $categories = Category::all();
         return view('post.edit', compact('post', 'categories'));
     }
@@ -82,6 +93,10 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        if (!auth()->user()) {
+            abort(403);
+        }
+
         $attr = $request->only(['title', 'text']);
         $post->fill($attr);
         $post->user_id = auth()->user()->id;
@@ -96,6 +111,10 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if (!auth()->user()) {
+            abort(403);
+        }
+
         $post->delete();
         return redirect()->route('posts.index');
     }
