@@ -19,9 +19,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Amir',
             'email' => 'amir@mail.com',
         ]);
+        $this->call([
+            CategorySeeder::class
+        ]);
 
-        Post::factory(10)->create();
-
-        Category::factory(4)->create();
+        // Post::factory(10)->create();
     }
 }

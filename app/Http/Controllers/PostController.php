@@ -15,7 +15,16 @@ class PostController extends Controller
     {
         $sortBy = $request->query('sort') ? $request->query('sort') : 'desc';
         $category = $request->query('category') ? $request->query('category') : '1';
-        $timeTravelPost = Post::where('category_id', 4)->whereYear('created_at', 2023)->limit(1)->first();
+
+        $timeTravelPosts = Post::where('category_id', 4)->get();
+        $timeTravelQuery = null;
+        if ($request->query('time-travel')) {
+            $timeTravelQuery = $request->query('time-travel');
+        } else if (Post::where('category_id', 4)->latest()->first()) {
+            $timeTravelQuery = Post::where('category_id', 4)->latest()->first()->id;
+        }
+
+        $selectedTimeTravelPost = $timeTravelQuery ? Post::find($timeTravelQuery) : null;
 
         $posts = Post::where('category_id', $category)->orderBy('created_at', $sortBy)->get();
 
@@ -24,7 +33,7 @@ class PostController extends Controller
             'category' => $category
         ];
 
-        return view('post.index', compact('posts', 'states', 'timeTravelPost'));
+        return view('post.index', compact('posts', 'states', 'timeTravelPosts', 'selectedTimeTravelPost'));
     }
 
     /**
@@ -79,7 +88,7 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.show', ['post' => $post]);
     }
 
     /**

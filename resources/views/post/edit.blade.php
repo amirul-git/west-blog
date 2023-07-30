@@ -17,7 +17,7 @@
                 <label for="text">Category</label>
                 <select name="category_id" id="category" class="bg-[#212529]">
                     @foreach ($categories as $category)
-                        <option @selected($post->id == $category->id) value="{{ $category->id }}">{{ $category->name }}</option>
+                        <option @selected($post->category_id == $category->id) value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
             </div>
