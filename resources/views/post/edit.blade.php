@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('main')
-    <main class="mt-16">
+    <main class="mt-16 w-64 md:w-[768px]">
         <form class="flex flex-col gap-4" action="{{ route('posts.update', ['post' => $post]) }}" method="post">
             @csrf
             @method('put')
