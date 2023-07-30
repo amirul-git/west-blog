@@ -46,11 +46,6 @@
             <a href="{{ route('posts.index', ['category' => '3']) }}" class="text-center"><span
                     class="@if ($states['category'] === '3') underline text-blue-300 @endif">Apps</span>
                 🚀</a>
-            @auth
-                <a href="{{ route('posts.create') }}"
-                    class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm flex items-center justify-center">New
-                    Post</a>
-            @endauth
         </nav>
         <div class="mt-8 flex gap-2 flex-wrap justify-center">
             <a href="{{ route('posts.index', ['sort' => 'desc']) }}"
@@ -60,6 +55,11 @@
                 class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm @if ($states['sort'] !== 'asc') opacity-50 @endif">Oldest
                 To
                 Newest</a>
+            @auth
+                <a href="{{ route('posts.create') }}"
+                    class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm flex items-center justify-center">New
+                    Post</a>
+            @endauth
         </div>
     </section>
     <section class="mt-8 flex flex-col gap-6">
