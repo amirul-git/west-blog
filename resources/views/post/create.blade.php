@@ -1,7 +1,7 @@
 @extends('layouts.index')
 
 @section('main')
-    <main class="mt-16">
+    <main class="mt-16 md:w-[768px]">
         <form class="flex flex-col gap-4" action="{{ route('posts.store') }}" method="post">
             @csrf
             <div class="flex flex-col gap-2">
