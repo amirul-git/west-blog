@@ -27,8 +27,10 @@
                     @foreach ($paragraphs as $paragraph)
                         <p class="text-xl mt-8">{{ $paragraph }}</p>
                     @endforeach
-                    <a href="{{ route('posts.edit', ['post' => $selectedTimeTravelPost]) }}"
-                        class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm inline-block mt-2">Edit</a>
+                    @auth
+                        <a href="{{ route('posts.edit', ['post' => $selectedTimeTravelPost]) }}"
+                            class="px-3 py-[6px] bg-white text-slate-900 rounded-md text-sm inline-block mt-2">Edit</a>
+                    @endauth
                 </div>
             @endif
         </div>
